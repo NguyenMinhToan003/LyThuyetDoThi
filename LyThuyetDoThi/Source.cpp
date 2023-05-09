@@ -213,3 +213,50 @@ DANHSACHKE daoNguocDoThi(DANHSACHKE dsk) {
 	}
 	return dskNguoc;
 }
+bool duyetCanhTrung(int x, visited ds) {
+	for (int i = 0; i < ds.n; i++) {
+		if (x == ds.ds[i])
+			return true;
+	}
+	return false;
+}
+//void duyet_bfs(DANHSACHKE dsk) {
+//	visited ds;
+//	ds.n = 0;
+//	ds.ds[ds.n++] = 0;
+//	cout << 0 << " ";
+//	for (int i = 0; i < dsk.n; i++) {
+//		NODE* p = dsk.dsk[i];
+//		while (p != NULL) {
+//			if (duyetCanhTrung(p->dinhke, ds));
+//			else {
+//				ds.ds[ds.n++] = p->dinhke;
+//				cout << p->dinhke << " ";
+//			}
+//			p = p->link;
+//		}
+//	}
+//}
+void duyet_bfs(DANHSACHKE dsk,int dinh) {
+	queue<int> q;
+	visited ds;
+	ds.n = 0;
+	ds.ds[ds.n++] = dinh;
+	q.push(dinh);
+	int dem = 0;
+	for(int i =0; i <dsk.n; i++) {
+		dem++;
+		NODE* p = dsk.dsk[q.front()];
+		while (p != NULL) {
+			if (!duyetCanhTrung(p->dinhke, ds))
+			{
+				q.push(p->dinhke);
+				ds.ds[ds.n++] = p->dinhke;
+				cout << q.front() << " ";
+				q.pop();
+			}
+			p = p->link;
+		}
+	}
+	cout <<"\n" << dem;
+}
