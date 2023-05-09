@@ -72,3 +72,6 @@ G’.
 phát v và xuất ra màn hình thứ tự các đỉnh duyệt được.
 */
 DANHSACHKE daoNguocDoThi(DANHSACHKE);
+
+void duyet_bfs(DANHSACHKE dsk,int dinh);
+bool duyetCanhTrung(int x, visited ds);
